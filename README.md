@@ -5,3 +5,5 @@
 - instalar complementos con pip
 - crear base de datos proyecto_vehiculos_cv, usuario: postgres y contraseña: 123456 o según corresponda cambiar en archivo de configuración
 - migrar la base de datos
+
+url a repositorio github : https://github.com/coniitav/proyecto_vehiculos_django
