@@ -1,8 +1,9 @@
 {% extends 'layout.html' %}
+{% load thousand_separator %}
 {% block content %}
-<section class="container text-center mt-2">
+<section class="container text-center mt-4">
     <h1>Listado de Vehículos</h1>
-    <table class="table table-stripped">
+    <table class="table table-stripped mt-4">
         <thead>
             <tr>
                 <th>Marca</th>
@@ -17,12 +18,12 @@
         <tbody>
             {% for vehiculo in vehiculos %}
                 <tr>
-                    <td>{{vehiculo.marca}}</td>
-                    <td>{{vehiculo.modelo}}</td>
+                    <td>{{vehiculo.marca|capfirst }}</td>
+                    <td>{{vehiculo.modelo|capfirst }}</td>
                     <td>{{vehiculo.serial_carroceria}}</td>
                     <td>{{vehiculo.serial_motor}}</td>
-                    <td>{{vehiculo.categoria}}</td>
-                    <td>{{vehiculo.precio}}</td>
+                    <td>{{vehiculo.categoria|capfirst }}</td>
+                    <td>${{vehiculo.precio|separar_miles_precio}}</td>
                     <td>
                         {% if vehiculo.precio <= 10000 %}
                             Bajo

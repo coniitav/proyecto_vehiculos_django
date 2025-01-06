@@ -1,42 +1,44 @@
 {% extends 'layout.html' %}
 {% block content %}
-<form action="/add" method="POST">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="marca">Marca</label>
-        <select class="form-select" name="marca">
-            <option value="chevrolet">Chevrolet</option>
-            <option value="ford" selected>Ford</option>
-            <option value="fiat">Fiat</option>
-            <option value="toyota">Toyota</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="modelo">Modelo</label>
-        <input class="form-control" type="text" name="modelo">
-    </div>
-    <div class="form-group">
-        <label for="serial_carro">Serial carroceria</label>
-        <input class="form-control" type="text" name="serial_carro">
-    </div>
-    <div class="form-group">
-        <label for="serial_motor">Serial motor</label>
-        <input class="form-control" type="text" name="serial_motor">
-    </div>
-    <div class="form-group">
-        <label for="categoria">Categoría</label>
-        <select class="form-select" name="categoria">
-            <option value="carga">Carga</option>
-            <option value="particular" selected>Particular</option>
-            <option value="transporte">Transporte</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="precio">Precio</label>
-        <input class="form-control" type="text" name="precio">
-    </div>
-    <div class="form-group">
-        <button type="submit">Enviar</button>
-    </div>
-</form>
+<div class="container">
+    <form action="/add" method="POST" class="mt-4">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="marca" class="fw-bold">Marca</label>
+            <select class="form-select" name="marca" required>
+                <option value="chevrolet">Chevrolet</option>
+                <option value="ford" selected>Ford</option>
+                <option value="fiat">Fiat</option>
+                <option value="toyota">Toyota</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="modelo" class="fw-bold">Modelo</label>
+            <input class="form-control" type="text" name="modelo" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="serial_carro" class="fw-bold">Serial carroceria</label>
+            <input class="form-control" type="text" name="serial_carro" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="serial_motor" class="fw-bold">Serial motor</label>
+            <input class="form-control" type="text" name="serial_motor" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="categoria" class="fw-bold">Categoría</label>
+            <select class="form-select" name="categoria" required>
+                <option value="carga">Carga</option>
+                <option value="particular" selected>Particular</option>
+                <option value="transporte">Transporte</option>
+            </select>
+        </div>
+        <div class="form-group mb-3">
+            <label for="precio" class="fw-bold">Precio</label>
+            <input class="form-control" type="text" name="precio" required>
+        </div>
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

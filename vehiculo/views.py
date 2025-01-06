@@ -10,6 +10,10 @@ def index(request):
     return render(request, "vehiculo/index.html")
 
 def add(request):    
+    if not request.user.is_authenticated or not request.user.has_perm('vehiculo.add_vehiculo'):
+        messages.error(request, "Usted no tiene permisos para ingresar vehículos.")
+        return redirect("/")
+
     if request.method == "POST":
         data = request.POST.copy()
 
@@ -23,6 +27,7 @@ def add(request):
         vehiculo.fecha_creacion = date.today()
         vehiculo.fecha_modificacion = date.today()
         vehiculo.save()
+        messages.success(request, "Vehículo agregado con éxito.")
 
         return redirect("/")
 
@@ -90,8 +95,14 @@ def sign_out(request):
     return redirect("/")
 
 def listar(request):
+    if not request.user.is_authenticated or not request.user.has_perm('vehiculo.visualizar_catalogo'):
+        messages.error(request, "Usted no tiene permisos para ver el listado de vehículos.")
+        return redirect("/")
+    
     vehiculos = Vehiculo.objects.all()
     context = {
         "vehiculos": vehiculos
     }
+
     return render(request, "vehiculo/listar.html", context)
+
